@@ -22,52 +22,56 @@ function App() {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.stopPropagation();
-      return;
-    }
+  
 
-    const isNonWhiteSpace = /^\S*$/;
-    if (!isNonWhiteSpace.test(password)) {
-      setError("Password must not contain Whitespaces.");
-      return;
-    }
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    // const form = e.currentTarget;
+    // if (form.checkValidity() === false) {
+      
+    //   e.stopPropagation();
+    //   return;
+    // }
 
-    const isContainsUppercase = /^(?=.*[A-Z]).*$/;
-    if (!isContainsUppercase.test(password)) {
-      setError("Password must have at least one Uppercase Character.");
-      return;
-    }
+    // const isNonWhiteSpace = /^\S*$/;
+    // if (!isNonWhiteSpace.test(password)) {
+    //   setError("Password must not contain Whitespaces.") 
+    //   return
+    // }
 
-    const isContainsLowercase = /^(?=.*[a-z]).*$/;
-    if (!isContainsLowercase.test(password)) {
-      setError("Password must have at least one Lowercase Character.");
-      return;
-    }
+    // const isContainsUppercase = /^(?=.*[A-Z]).*$/;
+    // if (!isContainsUppercase.test(password)) {
+    //   setError("Password must have at least one Uppercase Character.");
+    //   return
+    // }
 
-    const isContainsNumber = /^(?=.*[0-9]).*$/;
-    if (!isContainsNumber.test(password)) {
-      setError("Password must contain at least one Digit.");
-      return;
-    }
+    // const isContainsLowercase = /^(?=.*[a-z]).*$/;
+    // if (!isContainsLowercase.test(password)) {
+    //   setError("Password must have at least one Lowercase Character.");
+    //   return
+    // }
 
-    const isContainsSymbol =
-      /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
-    if (!isContainsSymbol.test(password)) {
-      setError("Password must contain at least one Special Symbol.");
-      return;
-    }
+    // const isContainsNumber = /^(?=.*[0-9]).*$/;
+    // if (!isContainsNumber.test(password)) {
+    //   setError("Password must contain at least one Digit.");
+    //   return
+    // }
 
-    const isValidLength = /^.{10,16}$/;
-    if (!isValidLength.test(password)) {
-      setError("Password must be 10-16 Characters Long.");
-      return;
-    }
-    setValidated(true);
+    // const isContainsSymbol =
+    //   /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
+    // if (!isContainsSymbol.test(password)) {
+    //   setError("Password must contain at least one Special Symbol.");
+    //   return
+    // }
 
+    // const isValidLength = /^.{10,16}$/;
+    // if (!isValidLength.test(password)) {
+    //   setError("Password must be 10-16 Characters Long.");
+    //   return
+    // }
+
+    // setValidated(true);
+    // setError('')
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -80,7 +84,7 @@ function App() {
         // ..
       });
     console.error("Hacked", email, password);
-    event.preventDefault();
+    e.preventDefault();
   };
 
   return (
